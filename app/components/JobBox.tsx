@@ -1,10 +1,10 @@
 function JobBox({ name, Id }) {
   return (
     <>
-      <div>
+      <li>
         <p>{name}</p>
         <p>{Id}</p>
-      </div>
+      </li>
     </>
   );
 }

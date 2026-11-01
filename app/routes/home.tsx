@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import JobBox from "~/components/JobBox";
 
 function Home() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetch("https://jsonfakery.com/jobs")
@@ -25,7 +26,11 @@ function Home() {
   return (
     <>
       <h1 className="text-4xl">hello world</h1>
-      <p>{loading === false && data !== null ? data[0].title : "loading"}</p>
+      <ul>
+        {loading === false && data.length > 0
+          ? data.map((e) => <JobBox Id={e.id} name={e.title}></JobBox>)
+          : "loading"}
+      </ul>
     </>
   );
 }
