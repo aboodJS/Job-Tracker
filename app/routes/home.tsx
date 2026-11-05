@@ -34,9 +34,11 @@ function Home() {
       <main className="grid grid-rows-6 justify-center h-screen content-evebly">
         <h1 className="text-4xl text-center self-start">Job Tracker</h1>
         <ul className="grid row-start-2 grid-cols-2  gap-5">
-          {loading === false && data.length > 0
-            ? data.map((e) => <JobBox Id={e.company} name={e.title}></JobBox>)
-            : "loading"}
+          {loading === false && data.length > 0 ? (
+            data.map((e) => <JobBox Id={e.company} name={e.title}></JobBox>)
+          ) : (
+            <p className="h-28 justify-self-center self-center animate-spin w-28 rounded-full border-4  border-b-transparent"></p>
+          )}
         </ul>
         <div className="flex gap-6 row-start-6 justify-self-center">
           {loading === false && data.length > 0 ? (
