@@ -17,6 +17,7 @@ function Home() {
       })
       .then((d) => {
         console.log(d);
+        localStorage.setItem("current data", JSON.stringify(d.data));
         setObj(d);
         return d.data;
       })
@@ -35,7 +36,9 @@ function Home() {
         <h1 className="text-4xl text-center self-start">Job Tracker</h1>
         <ul className="grid row-start-2 grid-cols-2  gap-5">
           {loading === false && data.length > 0 ? (
-            data.map((e) => <JobBox Id={e.company} name={e.title}></JobBox>)
+            data.map((e) => (
+              <JobBox company={e.company} Id={e.id} name={e.title}></JobBox>
+            ))
           ) : (
             <p className="h-28 justify-self-center self-center animate-spin w-28 rounded-full border-4  border-b-transparent"></p>
           )}
